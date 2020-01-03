@@ -10,7 +10,7 @@ import {
     Dimensions,
     RefreshControl
 } from 'react-native';
-import cityList from './data.json'
+import cityList from '../momock/city.json'
 import styles from './styles';
 const { width } = Dimensions.get('window')
 

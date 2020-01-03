@@ -1,6 +1,6 @@
 
 import React, { createRef } from 'react';
-import Routers from './routers/app';
+import Routers from './routers';
 
 export default class AppNavigationState extends React.Component {
     constructor(props) {

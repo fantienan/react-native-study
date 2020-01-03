@@ -1,16 +1,37 @@
-import React from 'react';
-import { View, Text, Button, } from 'react-native';
-import List from './List.js'
-import styles from './styles';
+import { createStackNavigator } from 'react-navigation-stack';
+import HomeScreen from './HomeScreen.js'
+import HomeDetails from './HomeDetails.js'
 
-export default function HomeScreen(props) {
-    callback = item => {
-        
-        props.navigation.navigate('Details', {...item})
+const HomeNavigator = createStackNavigator(
+    {
+      Home: {
+        screen: HomeScreen
+      },
+      Detail: {
+          screen: HomeDetails
+      }
+    },
+    {
+        defaultNavigationOptions: {
+            headerTitleStyle: {
+                color: 'white',
+            }, 
+            headerStyle: {
+                backgroundColor: 'rgb(29,216,200)'
+            }
+        }
     }
-    return (
-        <View style={styles.container}>
-            <List callback={item => callback(item)}/>
-        </View>
-    );
+);
+
+HomeNavigator.navigationOptions = ({navigation}) => {
+
+    let tabBarVisible = true;
+    if(navigation.state.index > 0) {
+        tabBarVisible = false;
+    }
+    return {
+        tabBarVisible
+    };
 }
+
+export default HomeNavigator
